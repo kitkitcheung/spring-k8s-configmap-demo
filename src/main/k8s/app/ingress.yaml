@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: spring-k8s-configmap-demo
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: helloweb-ip
+  labels:
+    app: spring-k8s-configmap-demo
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: spring-k8s-configmap-demo
+              servicePort: 8080

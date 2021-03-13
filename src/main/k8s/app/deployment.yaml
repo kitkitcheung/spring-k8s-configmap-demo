@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-k8s-configmap-demo
+  labels:
+    app: spring-k8s-configmap-demo
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-k8s-configmap-demo
+  template:
+    metadata:
+      labels:
+        app: spring-k8s-configmap-demo
+    spec:
+      serviceAccountName: kk-svc
+      containers:
+        - name: spring-k8s-configmap-demo
+          image: eu.gcr.io/kk-poc-307414/com/kitkit/spring-k8s-configmap-demo:1.0.0-SNAPSHOT
+          imagePullPolicy: Always
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "development"
+          resources:
+            requests:
+              memory: "10Mi"
+              cpu: "0"
+            limits:
+              memory: "1Gi"
+              cpu: "0.5"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+              name: http
