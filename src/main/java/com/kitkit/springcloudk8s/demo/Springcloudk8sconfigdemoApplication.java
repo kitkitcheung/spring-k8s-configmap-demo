@@ -1,4 +1,4 @@
-package com.bolingcavalry.springcloudk8sconfigdemo;
+package com.kitkit.springcloudk8s.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
