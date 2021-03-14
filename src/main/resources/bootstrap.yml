@@ -8,4 +8,3 @@ spring:
       config:
         sources:
           - name: ${spring.application.name}
-            namespace: default

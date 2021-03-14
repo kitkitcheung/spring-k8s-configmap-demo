@@ -2,11 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: app-network-policy
-  namespace: default
+  namespace: kk-ns
 spec:
-  podSelector:
-    matchLabels:
-      app: spring-k8s-configmap-demo
+  podSelector: {}
   policyTypes:
     - Ingress
     - Egress
@@ -17,8 +15,3 @@ spec:
       ports:
         - protocol: TCP
           port: 8080
-        - protocol: TCP
-          port: 80
-    - from:
-        - namespaceSelector: {}
-        - podSelector: {}

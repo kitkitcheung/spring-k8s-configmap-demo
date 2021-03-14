@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: default-network-policy
-  namespace: default
+  namespace: kk-ns
 spec:
   podSelector: {}
   policyTypes:
@@ -10,7 +10,13 @@ spec:
     - Egress
   egress:
     - to:
-        - namespaceSelector: {}
-      ports:
-        - protocol: UDP
-          port: 53
+        - namespaceSelector:
+            matchLabels:
+              namespace: kk-ns
+        - podSelector: {}
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              namespace: kk-ns
+        - podSelector: {}
