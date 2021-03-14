@@ -11,20 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @SpringBootApplication
-@RestController
-@EnableConfigurationProperties(DummyConfig.class)
 public class Springcloudk8sconfigdemoApplication {
-
-    @Autowired
-    private DummyConfig dummyConfig;
-
-    @GetMapping("/")
-    public String hello() {
-        return dummyConfig.getMessage()
-                + " ["
-                + new SimpleDateFormat().format(new Date())
-                + "]";
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(Springcloudk8sconfigdemoApplication.class, args);
